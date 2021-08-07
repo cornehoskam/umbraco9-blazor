@@ -8,7 +8,7 @@ using Umbraco9_Blazor.Models;
 
 namespace Umbraco9_Blazor.Services
 {
-    public class RazorPublishEventService : IRazorPublishEventService
+    public class BlazorPublishEventService : IBlazorPublishEventService
     {
         public List<PublishEventModel> PublishEventList { get; set; }
         public void AddEvent(PublishEventModel eventModel)
@@ -17,7 +17,7 @@ namespace Umbraco9_Blazor.Services
             NotifyPropertyChanged();
         }
 
-        public RazorPublishEventService()
+        public BlazorPublishEventService()
         {
             PublishEventList = new List<PublishEventModel>()
             {

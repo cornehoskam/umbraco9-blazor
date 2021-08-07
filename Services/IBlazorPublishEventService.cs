@@ -4,7 +4,7 @@ using Umbraco9_Blazor.Models;
 
 namespace Umbraco9_Blazor.Services
 {
-    public interface IRazorPublishEventService : INotifyPropertyChanged
+    public interface IBlazorPublishEventService : INotifyPropertyChanged
     {
         public List<PublishEventModel> PublishEventList { get; set; }
 

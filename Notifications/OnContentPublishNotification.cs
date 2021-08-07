@@ -11,18 +11,18 @@ namespace Umbraco9_Blazor.Notifications
 {
     public class OnContentPublishNotification : INotificationHandler<ContentPublishedNotification>
     {
-        private readonly IRazorPublishEventService _razorPublishEventService;
+        private readonly IBlazorPublishEventService _blazorPublishEventService;
 
-        public OnContentPublishNotification(IRazorPublishEventService razorPublishEventService)
+        public OnContentPublishNotification(IBlazorPublishEventService blazorPublishEventService)
         {
-            _razorPublishEventService = razorPublishEventService;
+            _blazorPublishEventService = blazorPublishEventService;
         }
 
         public void Handle(ContentPublishedNotification notification)
         {
             foreach (var node in notification.PublishedEntities)
             {
-                _razorPublishEventService.AddEvent(new PublishEventModel()
+                _blazorPublishEventService.AddEvent(new PublishEventModel()
                 {
                     PublishDate = DateTime.Now,
                     ModelAlias = node.ContentType.Alias

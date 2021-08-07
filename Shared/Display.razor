@@ -1,6 +1,6 @@
 ﻿@using System.ComponentModel
 @using Umbraco9_Blazor.Services
-@inject IRazorPublishEventService PublishEventService
+@inject IBlazorPublishEventService PublishEventService
 
 <div>
     @foreach (var publishEvent in PublishEventService.PublishEventList)
@@ -10,6 +10,7 @@
 </div>
 
 @code {
+
     protected override void OnInitialized()
     {
         PublishEventService.PropertyChanged += PropertyHasChanged;
@@ -17,9 +18,7 @@
 
     private void PropertyHasChanged(object sender, PropertyChangedEventArgs args)
     {
-#pragma warning disable 4014
         InvokeAsyncState();
-#pragma warning restore 4014
     }
 
     private async Task InvokeAsyncState()

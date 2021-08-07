@@ -52,12 +52,9 @@ namespace Umbraco9_Blazor
                 .Build();
 
             services.AddServerSideBlazor();
-            services.AddSingleton<IRazorPublishEventService, RazorPublishEventService>();
+            services.AddSingleton<IBlazorPublishEventService, BlazorPublishEventService>();
         }
 
-        /// <summary>
-        /// Configures the application
-        /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
