@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco9_Blazor.Models.UmbracoModelsBuilder.Homepage>
+@using Umbraco9_Blazor.Shared
+@{
+	Layout = null;
+}
+<head>
+  
+</head>
+<body>
+    <div>
+        <h1>@Model.Title</h1>
+        @Html.Raw(Model.Content.ToHtmlString())
+
+        @(await Html.RenderComponentAsync<Display>(RenderMode.ServerPrerendered))
+    </div>
+<script src="~/_framework/blazor.server.js"></script>
+</body>

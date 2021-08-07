@@ -1,0 +1,32 @@
+﻿@using System.ComponentModel
+@using Umbraco.Cms.Core.Services
+@using Umbraco.Cms.Core.Services.Implement
+@using Umbraco9_Blazor.Models
+@using Umbraco9_Blazor.Models.UmbracoModelsBuilder
+@using Umbraco9_Blazor.Services
+@inject IRazorPublishEventService PublishEventService
+
+<div>
+    @foreach (var publishEvent in PublishEventService.PublishEventList)
+    {
+        <p>@publishEvent.PublishDate : @publishEvent.ModelAlias</p>
+    }      
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        PublishEventService.PropertyChanged += PropertyHasChanged;
+    }
+
+    private void PropertyHasChanged(object sender, PropertyChangedEventArgs args)
+    {
+        InvokeAsyncState();
+    }
+
+    private async Task InvokeAsyncState()
+    {
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+}
