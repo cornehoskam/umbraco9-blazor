@@ -1,8 +1,4 @@
 ﻿@using System.ComponentModel
-@using Umbraco.Cms.Core.Services
-@using Umbraco.Cms.Core.Services.Implement
-@using Umbraco9_Blazor.Models
-@using Umbraco9_Blazor.Models.UmbracoModelsBuilder
 @using Umbraco9_Blazor.Services
 @inject IRazorPublishEventService PublishEventService
 
@@ -21,12 +17,14 @@
 
     private void PropertyHasChanged(object sender, PropertyChangedEventArgs args)
     {
+#pragma warning disable 4014
         InvokeAsyncState();
+#pragma warning restore 4014
     }
 
     private async Task InvokeAsyncState()
     {
-        await InvokeAsync(() => StateHasChanged());
+        await InvokeAsync(StateHasChanged);
     }
 
 }
